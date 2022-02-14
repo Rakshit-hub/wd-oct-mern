@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title> js file</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script>
+            const rootHandle=document.getElementById('root')
+
+            
+
+            const buttonTag=document.createElement('button')
+            buttonTag.innerHTML='Enter Name'
+            rootHandle.appendChild(buttonTag)
+
+            buttonTag.addEventListener('click',function(){
+                h1Tag.innerHTML=prompt('enter name')
+            })
+
+            const h1Tag=document.createElement('h1')
+            h1Tag.innerHTML=`hi${name}`
+            rootHandle.appendChild(h1Tag)
+                        </script>
+    </body>
+</html>

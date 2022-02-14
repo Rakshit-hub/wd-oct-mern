@@ -1,0 +1,46 @@
+<html>
+    <head>
+            <title>its awesome</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script>
+ const rootHandle=document.getElementById('root')
+
+ const h1Tag=document.createElement('h1')
+ h1Tag.innerHTML=0
+ rootHandle.appendChild(h1Tag)
+
+ const buttonTag=document.createElement('button')
+ buttonTag.innerHTML='up'
+ rootHandle.appendChild(buttonTag)
+
+ buttonTag.addEventListener('click',function(){
+    h1Tag.innerHTML=Number(h1Tag.innerHTML)+1
+ })
+
+ const buttonTag1=document.createElement('button')
+ buttonTag1.innerHTML='down'
+ rootHandle.appendChild(buttonTag1)
+
+ buttonTag1.addEventListener('click',function(){
+    h1Tag.innerHTML=Number(h1Tag.innerHTML)-1
+ })
+
+ const buttonTag3=document.createElement('button')
+ buttonTag3.innerHTML='reset'
+ rootHandle.appendChild(buttonTag3)
+
+ buttonTag3.addEventListener('click',function(){
+    h1Tag.innerHTML=0
+ })
+
+
+
+        </script>
+
+        
+    </body>
+</html>

@@ -1,0 +1,48 @@
+ <html>
+    <head>
+        <title></title>
+        
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            const colors=['red','yellow','pink','blue']
+               
+            
+            
+            
+            const ele=(
+                <div>
+                    <h1> Listing color-{colors.length}</h1>
+                <ul>
+                {colors.map(function(ele,i){
+                    return <li key={i} style={{backgroundColor:ele,color:'black  '}}> {ele} </li>
+                })}
+                
+                </ul>
+            </div>
+            )
+            ReactDOM.render(ele,rootHandle)
+            
+            
+            
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

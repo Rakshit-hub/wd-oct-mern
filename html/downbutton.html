@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title> js file</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script>
+            const rootHandle=document.getElementById('root')
+
+            const h1Tag=document.createElement('h1')
+            h1Tag.innerHTML=15
+            rootHandle.appendChild(h1Tag)
+
+            const buttonTag=document.createElement('button')
+            buttonTag.innerHTML='down'
+            rootHandle.appendChild(buttonTag)
+            buttonTag.addEventListener('click',function(){
+                h1Tag.innerHTML=Number(h1Tag.innerHTML)-1
+            })
+
+             
+                        </script>
+    </body>
+</html>

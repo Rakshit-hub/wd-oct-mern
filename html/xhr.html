@@ -1,0 +1,30 @@
+<html>
+        <head>
+                <title>its awesome</title>
+        </head>
+        <body>
+            <div id="root">
+    
+            </div>
+            <script>
+                const xhr=new XMLHttpRequest()
+                console.log('after init',xhr.responseText)
+                xhr.open('GET','https://jsonplaceholder.typicode.com/users')
+                xhr.send()
+                xhr.onload=function(){
+                    //response text always contain the data from server
+                    console.log(typeof xhr.responseText)//'string'
+                    const users=JSON.parse(xhr.responseText)
+                    console.log(typeof users)
+                    console.log('listening users',users.length)
+                    console.log(users)
+                }
+     
+    
+    
+    
+            </script>
+    
+            
+        </body>
+    </html>

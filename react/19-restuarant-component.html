@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            function Resturants(props){
+                console.log('resturants props',props)
+                return(
+                    <div>
+                        <h2>{props.name}</h2>
+                        <p>{props.price}-{props.rating}</p>
+                        <hr/>
+                        </div>
+                )
+            }
+
+            function App(props){
+                const resturants=[
+                    {id:1,name:'kfc',price:300,rating:4.8},
+                    {id:1,name:'sweet truth',price:400,rating:4.6},
+                    {id:1,name:'MTR',price:500,rating:4.3}
+
+                ]
+                return(
+                    <div>
+                        <h1>Listing Resturants -{resturants.length}</h1>
+                        {
+                            resturants.map(function(hotel){
+                                return(
+                                    <Resturants
+                                    key={hotel.id}
+                                    name={hotel.name}
+                                    price={hotel.price}
+                                    rating={hotel.rating}
+                                    />
+                                )
+                            })
+                        }
+                        </div>
+                )
+            }
+            ReactDOM.render(<App />,rootHandle)
+
+
+        </script>
+    </body>
+</html>

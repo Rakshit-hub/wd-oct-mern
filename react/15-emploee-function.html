@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+ 
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+           
+            const employees=[
+                {id:1,name:'Arjun',dept:"tech",email:'a@gmail.com'},
+                {id:1,name:'mahi',dept:"tech",email:'m@gmail.com'},
+                {id:1,name:'Rakshit',dept:"finance",email:'r@gmail.com'},
+                {id:1,name:'supriya',dept:"finance",email:'s@gmail.com'},
+                {id:1,name:'Rashmi',dept:"tech",email:'rash@gmail.com'}
+                ]
+                const financeEmployee=employees.filter(emp=>emp.dept=='finance')
+                    const techEmployee=employees.filter(emp=>emp.dept=='tech')
+                    //function component
+                    //function except 1 parameter called as props
+                    //function rturns react elements or jsx
+                    function EmployeeList(props){
+                        return(
+                            <div>
+                            <h2>{props.name}-{props.employees.length}</h2>
+                            <ul>
+                            {
+                                props.employees.map(employee=>{
+                                    return <li key={employee.ids}>{employee.name}<button onClick={()=>{
+                                        alert(employee.email)
+                                    }}>show</button></li>
+                                })
+                            }
+                            </ul>
+                            </div>
+                        )
+                    }
+                    const ele=(
+                        <div>
+                        {EmployeeList({name:'tech',employees:techEmployee})}
+                        <EmployeeList name='finance'employees={financeEmployee}/>
+                        </div>
+                    )
+                    ReactDOM.render(ele,rootHandle)
+
+
+        </script>
+    </body>
+</html>n

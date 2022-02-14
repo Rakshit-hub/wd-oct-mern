@@ -1,0 +1,50 @@
+<html>
+        <head>
+                <title>its awesome</title>
+        </head>
+        <body>
+            <div id="root">
+    
+            </div>
+            <script>
+                const rootHandle=document.getElementById('root')
+                const xhr=new XMLHttpRequest()
+                console.log('after init',xhr.responseText)
+                xhr.open('GET','https://jsonplaceholder.typicode.com/todos')
+                xhr.send()
+                xhr.onload=function(){
+                    let  count=0
+                    const users=JSON.parse(xhr.responseText)
+                  
+
+                    const h2Tag=document.createElement('h2')
+                    h2Tag.innerHTML=`Listing Tasks ${users.length}`
+                    rootHandle.appendChild(h2Tag)
+
+                    const ulTag=document.createElement('ul')
+                    rootHandle.appendChild(ulTag)
+
+                    users.forEach(function(user){
+                        
+                        let increment=0
+                        if(user.completed==true){
+                            count++
+                        }
+                        else{
+                            increment++
+                         }
+                        // console.log(count) 
+                       // let completedTask=count
+                     
+                        
+                     })
+                     const h3Tag=document.createElement('h3')
+                    h3Tag.innerHTML=`completed task:${count}`
+                        rootHandle.appendChild(h3Tag)
+                   
+                }
+            </script>
+    
+            
+        </body>
+    </html>

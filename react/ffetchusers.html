@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel">
+        
+        
+            const rootHandle=document.getElementById('root')
+            class FetchUsers extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        users:[]
+                    }
+                }
+                handleUp=()=>{
+                    axios.get('https://jsonplaceholder.typicode.com/users/')
+                    .then((response)=>{
+                        const users=response.data
+                        console.log(response)
+                        this.setState({users})
+                        
+                    })
+                    
+                }
+                render(){
+                    return(
+                        <div>
+                            <h2>Listing Users-{this.state.users.length}</h2>
+                            <ul>
+                                {this.state.users.map((user)=>{
+                                    return<li key={user.id}>{user.name}</li>
+                                })}
+                                </ul>
+                            <button onClick={this.handleUp}>FetchUsers</button>
+                            </div>
+                    )
+                }
+
+            }
+            ReactDOM.render(<FetchUsers/>,rootHandle)
+
+
+        </script>
+    </body>
+</html>

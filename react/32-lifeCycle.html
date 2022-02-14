@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            class Greet extends React.Component{
+                constructor(){
+                    console.log('constructor')
+                    super()
+                    this.state={
+                        msg:'hi there',
+                        count:0
+                    }
+                    this.handleClick=this.handleClick.bind(this)
+                }
+                handleClick(){
+                    console.log('handle click funsction')
+                    this.setState(prevState=>({
+                        count:prevState.count+1
+                    }),()=>{
+                        console.log(this.state)
+                    })
+                    // i we wanr a updated state vaue within a function then we have to pass an call back function to the set state method,within this function we now to acess the updated state value
+                }
+                componentDidMount(){
+                    console.log('component did mount')
+                }
+                render(){
+                    console.log('render',this.state)
+                    return(
+                        <div>
+                            <h1>{this.state.msg}-{this.state.count}</h1>
+                            <button onClick={this.handleClick}>Up</button>
+                            </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Greet/>,rootHandle)
+
+        </script>
+    </body>
+</html>

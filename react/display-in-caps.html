@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            class Display extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        name:''
+                    }
+                    
+                }
+                handleSubmit=(e)=>{
+                        e.preventDefault()
+                    }
+
+                    handleChange=(e)=>{
+                        const name=e.target.value
+                        this.setState({name:name.toUpperCase()})
+                    }
+                render(){
+                    return(
+                        <div>
+                            <form onSubmit={this.handleSubmit}>
+                                <label>
+                                DISPLAY IN CAPS 
+                                <input type='text' value={this.state.name} onChange={this.handleChange}/>
+                                </label>
+                                <input type='submit'/>
+                            </form>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Display/>,rootHandle)
+
+
+        </script>
+    </body>
+</html>

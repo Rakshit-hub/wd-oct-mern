@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+                //event handler
+                function handleClick(){
+                    alert('the button was clicked')
+                }
+                const ele=(
+                    <div>
+                        <button onClick={()=>{
+                            alert('Button clicked')
+                        }}> inline event handler click me!!! </button>
+                            <button> onClick={handleClick}> regular event handler click</button>
+                        </div>
+                )
+                ReactDOM.render(ele,rootHandle)
+
+        </script>
+    </body>
+</html>

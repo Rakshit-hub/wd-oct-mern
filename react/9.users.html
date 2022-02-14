@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            const users=[
+                {id:1,name:'arjun'},
+                {id:2,name:'manu'},
+                {id:3,name:'kritika'}
+            ]
+            
+            
+            const ele=(
+                <div>
+                    <h1> Listing user-{users.length}</h1>
+                <ul>
+                {users.map(function(ele){
+                    return <li key={ele.id}> {ele.name} </li>
+                })}
+                
+                </ul>
+            </div>
+            )
+            ReactDOM.render(ele,rootHandle)
+            
+            
+            
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

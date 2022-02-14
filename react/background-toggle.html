@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            class Toggle extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        isbackgroundRed:true
+                    }
+                }
+
+                handleToggle=()=>{
+                    const isbackground=true
+                    this.setState((prevState)=>{
+                        return{
+                           isbackgroundRed:!prevState.isbackgroundRed
+                        } 
+                    })
+                }
+                render(){
+                    return(
+                        <div>
+                            <style>{this.state.isbackgroundRed?<style>{'body{background-color:black}'}</style>:<style>{'body{background-color:white}'}</style>}</style>
+                        <button onClick={this.handleToggle}>Toggle</button>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Toggle />,rootHandle)
+
+        </script>
+    </body>
+</html>

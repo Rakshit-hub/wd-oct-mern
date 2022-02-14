@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+           class Counter extends React.Component{
+               constructor(){
+                   super()
+                   this.state={
+                       count:25
+                   }
+               }
+               
+               render(){
+                   return(
+                       <div>
+                        <h1>{this.state.count}seconds..</h1>
+                        <button onClick={this.handleCounter}>start</button>
+                        </div>
+                   )
+               }
+           }
+           ReactDOM.render(<Counter/>,rootHandle)
+
+        </script>
+    </body>
+</html>

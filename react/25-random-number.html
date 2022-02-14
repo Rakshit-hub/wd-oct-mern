@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            class GenerateRandom extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        number:''
+                    }
+                    this.handleClick=this.handleClick.bind(this)
+                }
+                handleClick(){                                      //we can use arrow function here
+                    const number=Math.round(Math.random()*10)
+                    this.setState({number})                         //we can pass a object also instead of function{number:number}
+                }                   
+                render(){
+                    return(
+                        <div>
+                            <h1>Random Number Generator</h1>
+                            <p>{this.state.number}</p>
+                            <button onClick={this.handleClick}>Generate</button>
+                            </div>
+                    )
+                }
+
+            }
+            ReactDOM.render(<GenerateRandom/>,rootHandle)
+
+
+        </script>
+    </body>
+</html> 

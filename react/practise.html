@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel">
+        
+        
+            const rootHandle=document.getElementById('root')
+            class UserShow extends React.Component{
+    constructor(){
+        super()
+        this.state={
+            user:{},
+            id:''
+        }
+    }
+    componentDidMount(){
+        
+        axios.get(`https://jsonplaceholder.typicode.com/users/${this.state.id}`)
+        .then((response)=>{
+            const user=response.data
+            console.log(response.data)
+            this.setState({user})
+        })
+        .catch((err)=>{
+            alert(err)
+        })
+
+    }
+    handleChange=(e)=>{
+       const id=e.target.value
+       this.setState({id})
+    }
+    handleSubmit(e){
+        e.preventDefault()
+    }
+    render(){
+        return(
+            <div>
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    id
+                    <input type='text' value={this.state.value} onChange={this.handleChange}/>
+                    <input type='submit' value="getDetails"/>
+                    
+                    </label>
+                    <p>{this.state.user.name}</p>
+                </form>
+             
+                
+            </div>
+        )
+    }
+}
+
+
+          ReactDOM.render(<UserShow/>,rootHandle)
+        </script>
+    </body>
+</html>

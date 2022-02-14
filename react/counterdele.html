@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel">
+        const rootHandle=document.getElementById('root')
+        class Random extends React.Component{
+            constructor(){
+                super()
+                this.state={
+                    number:0
+                }
+            }
+            componentDidMount(){
+                setInterval(()=>{
+                    const number=Math.round(Math.random()*10)
+                    this.setState({number}) 
+                },1000)
+                
+            }
+            render(){
+                return (
+                    <div>
+                        <h1>{this.state.number}</h1>
+                        </div>
+                )
+            }
+        }
+        
+        
+           
+            ReactDOM.render(<Random/>,rootHandle)
+
+
+        </script>
+    </body>
+</html>

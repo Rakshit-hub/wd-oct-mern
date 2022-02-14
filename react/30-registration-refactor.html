@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            class Registration extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        name:'',
+                        email:'',
+                        password:''
+                    }
+                    this.handleSubmit=this.handleSubmit.bind(this)
+                    this.handleChange=this.handleChange.bind(this)
+                    
+                }
+                handleSubmit(e){
+                    e.preventDefault()
+                    const formData={
+                        name:this.state.name,
+                        email:this.state.email,
+                        password:this.state.password
+                    }
+                    console.log(formData)
+                }
+                handleChange(e){
+                    
+                    this.setState({
+                        [e.target.name]:e.target.value
+                    })
+                }
+                
+
+                render(){
+                    return(
+                        <div>
+                            <h2>Register With Us</h2> 
+                            <form onSubmit={this.handleSubmit}>
+                                <label>
+                                    Name
+                                    <input type='text' value={this.state.name} onChange={this.handleChange} name='name'/>
+                                    </label>
+                                    <br/>
+
+                                    <label>
+                                    Email
+                                    <input type='text' value={this.state.email} onChange={this.handleChange} name='email'/>
+                                    </label>
+                                    <br/>
+
+                                    <label>
+                                    password
+                                    <input type='text' value={this.state.password} onChange={this.handleChange} name='password '/>
+                                    </label>
+                                    <br/>
+                                    <input type='submit'/>
+                                    
+                                    
+                                </form>
+                            </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Registration />,rootHandle)
+
+
+        </script>
+    </body>
+</html>

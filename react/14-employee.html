@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Listing employees</title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            const employees=[
+                {id:1,name:'Arjun',dept:"tech"},
+                {id:1,name:'mahi',dept:"tech"},
+                {id:1,name:'Rakshit',dept:"finance"},
+                {id:1,name:'supriya',dept:"finance"},
+                {id:1,name:'Rashmi',dept:"tech"}
+                ]
+                    const financeEmployee=employees.filter(emp=>emp.dept=="finance")
+                    const techEmployee=employees.filter(emp=>emp.dept=='tech')
+                
+                const ele=(
+                <div>
+                <h2>Tech-{techEmployee.length}</h2>
+                <ul>
+                {
+                    techEmployee.map(employee =>{
+                        return <li key={employee.id}>{employee .name}</li>
+                    })
+                }
+                </ul>
+
+                <h2>Finance-{financeEmployee.length}</h2>
+                <ul>
+                {
+                    financeEmployee.map(employee =>{
+                        return <li key={employee.id}>{employee.name}</li>
+                    })
+                }
+                </ul>
+                </div>
+                )
+                ReactDOM.render(ele,rootHandle)
+
+        </script>
+    </body>
+</html>

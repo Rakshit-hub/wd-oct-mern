@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            function Product(props){
+                return(
+                    <div>
+                        <h2>{props.name}</h2>
+                        <p>{props.price}</p>
+                        <p>{props.offer}</p>
+                        <hr/>
+                        </div>
+                )
+            }
+            function App(props){
+                const products=[
+                    {id:1,name:'marker',price:150,offers:'dct20'},
+                    {id:2,name:'scale',price:70,offers:'dct40'},
+                    {id:3,name:'pencil',price:30,offers:'dct90'}
+                ]
+                return(
+                    <div>
+                       <h3>Listing Products-{products.length}</h3>
+                        {
+                            products.map(function(ele){
+                                return (
+                                    <Product
+                                   // key={ele.id}
+                                    name={ele.name}
+                                    price={ele.price}
+                                    offer={ele.offer}
+                                    />
+                                )
+
+                            })
+                        }
+                        </div>
+                )
+            }
+            ReactDOM.render(<App />,rootHandle)
+
+
+        </script>
+    </body>
+</html>

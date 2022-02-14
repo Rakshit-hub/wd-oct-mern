@@ -1,0 +1,37 @@
+<html>
+        <head>
+                <title>its awesome</title>
+        </head>
+        <body>
+            <div id="root">
+    
+            </div>
+            <script>
+                const rootHandle=document.getElementById('root')
+                const xhr=new XMLHttpRequest()
+                console.log('after init',xhr.responseText)
+                xhr.open('GET','https://jsonplaceholder.typicode.com/posts')
+                xhr.send()
+                xhr.onload=function(){
+                   
+                    const users=JSON.parse(xhr.responseText)
+                  
+
+                    const h2Tag=document.createElement('h2')
+                    h2Tag.innerHTML=`Listing Posts ${users.length}`
+                    rootHandle.appendChild(h2Tag)
+
+                    const ulTag=document.createElement('ul')
+                    rootHandle.appendChild(ulTag)
+
+                    users.forEach(function(user){
+                        const liTag=document.createElement('li')
+                        liTag.innerHTML=`title---${user.title}---body-${user.body}`
+                        ulTag.appendChild(liTag)
+                    })
+                }
+            </script>
+    
+            
+        </body>
+    </html>

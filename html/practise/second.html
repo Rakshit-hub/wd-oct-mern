@@ -1,0 +1,32 @@
+<html>
+    <head>
+            <title>its awesome</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script>
+            const rootHandle=document.getElementById('root')
+            const players=['sachin','rakshit','abhi']
+
+            const h1Tag=document.createElement('h1')
+            h1Tag.innerHTML=`listing players--${players.length}`
+            rootHandle.appendChild(h1Tag)
+
+            const ulTag=document.createElement('ul')
+            rootHandle.appendChild(ulTag)
+
+            players.forEach(function(player){
+                const liTag=document.createElement('li')
+                liTag.innerHTML=player
+                ulTag.appendChild(liTag)
+            })
+
+
+
+        </script>
+
+        
+    </body>
+</html>

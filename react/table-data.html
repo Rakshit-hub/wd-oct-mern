@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            const student=[
+                {id:1,name:'rakshit',email:'rakshit@gmail.com'},
+                {id:2,name:'rashmi',email:'rashmi@gmail.com'}
+            ]
+            <div>
+            <h1>Listing students-{student.length}</h1>
+            <table border='1'>
+            <thead>
+            <tr>
+                    <td> id </td>
+                    <td> name </td>
+                    <td> email</td>
+             </tr>
+                </thead>
+                    <tbody>
+
+
+                    {
+                        students.map(function(student){
+                            return (
+                                        <tr>
+                                        <td>{student.id}</td>
+                                        <td>{student.name}</td>
+                                        <td>{student.email}</td>
+                                        </tr>
+
+
+                            )
+                        })
+                    }
+                    </tbody>
+                    </table>
+
+
+
+
+
+
+                    ReactDOM.render(<Counter/>,rootHandle)
+        </script>
+    </body>
+</html>

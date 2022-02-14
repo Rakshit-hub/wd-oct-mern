@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title> js file</title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        <script>
+            const rootHandle=document.getElementById('root')
+            const players=['sachin','rahul','shewag','laxman','srinath','zaheer','yuvraj']
+
+            const h2Tag=document.getElementById('h2')
+            h2Tag.innerHTML=`Listing players-${players.length}`
+
+            rootHandle.appendChild(h2Tag)
+            const ulTag=document.createElement('ul')
+            rootHandle.appendChild(ulTag)
+            players.sort().forEach(function(player){
+                const liTag=document.createElement('li')
+                liTag.innerHTML=player
+                ulTag.appendChild(liTag)
+            })
+                   </script>
+    </body>
+</html>

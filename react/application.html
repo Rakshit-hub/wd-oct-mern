@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel">
+        
+        
+            const rootHandle=document.getElementById('root')
+            class Aplication extends React.Component{
+                constructor(){
+                    super()
+                this.state={
+                    department:'',
+                    employeeId:[],
+                    users:{}
+                }
+                }
+               
+                handleDepartmentChange=(e)=>{
+                    const department=e.target.value
+                    this.setState({department})
+                }
+                handleemployeeIdChange=(e)=>{
+                    const employeeId=e.target.value
+                    this.setState({employeeId})
+                }
+                handleSubmit=(e)=>{
+                    e.preventDefault()
+                    axios.get(`https://reqres.in/api/users/2`)
+                    .then((response)=>{
+                        const users=response.data.data
+                        this.setState({users})
+                    })
+                }
+                render(){
+                    return(
+                        <div>
+                            <form onSubmit={this.handleSubmit}>
+                                <label>
+                                    department
+                                    <select  value={this.state.department} onChange={this.handleDepartmentChange}>
+                                        <option value='HR'>HR</option>
+                                        <option value='Engineering'>Engineering</option>
+                                    </select>
+
+                                        
+                                    </label>
+                                    
+                                    <label>
+                                        employeeId
+                                        <select value={this.state.employeeId} onChange={this.handleemployeeIdChange}>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                    </select>
+                                    
+                                    <input type='submit' value="GetDetails"/>
+                                        </label>
+                                        <h2>Employee Details</h2>
+                                       <p>email-{this.state.users.email}</p>
+                                       <p>FirstName-{this.state.users.first_name}</p>
+                                       <p>LastName-{this.state.users.last_name}</p>
+                                       <img src={this.state.users.avatar}></img>;
+                                </form>
+                            </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Aplication/>,rootHandle)
+
+
+        </script>
+    </body>
+</html>

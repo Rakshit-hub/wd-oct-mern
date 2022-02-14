@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            let number=10
+            const ele=<h1>{number}</h1>
+            setInterval(function(){
+                number=Math.round(Math.random()*100)
+                const ele=<h1>{number}</h1>
+            ReactDOM.render(ele,rootHandle)
+
+            },500)
+            ReactDOM.render(ele,rootHandle)
+           
+
+        </script>
+    </body>
+</html>

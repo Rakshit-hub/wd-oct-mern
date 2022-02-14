@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel">
+        
+        
+            const rootHandle=document.getElementById('root')
+            class UserInfo extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        users:{},
+                        id:''
+                    }
+                }
+                handleSubmit=(e)=>{
+                    e.preventDefault()
+                    axios.get(`https://jsonplaceholder.typicode.com/users/${this.state.id}`)
+                    .then((response)=>{ 
+                          
+                        const users=response.data
+                        this.setState({users})
+                        console.log(users)
+                    })
+                    .catch((err)=>{
+                        alert(err)
+                    })
+                }
+               
+                handleChange=(e)=>{
+                    console.log(e)
+                    const id=e.target.value
+                    this.setState({id})
+                    
+                 }   
+                render(){
+                    return(
+                        <div>
+                            <h1>Get User Info</h1>
+                            <form onSubmit={this.handleSubmit}>
+                                <label>
+                                    user details
+                                    <input type='text' value={this.state.id} onChange={this.handleChange}/>
+                                    </label>
+                                    <input type='submit'/>
+                                </form>
+                                <p>{this.state.users.name}-{this.state.users.email}</p>
+                            </div>
+                    )
+                }
+            }
+            ReactDOM.render(<UserInfo/>,rootHandle)
+
+
+        </script>
+    </body>
+</html>

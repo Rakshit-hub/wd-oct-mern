@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel">
+        
+        
+            const rootHandle=document.getElementById('root')
+            
+            class Counter extends React.Component{
+                
+                constructor(){
+                    super()
+                    this.state={
+                        count:0
+                    }
+                }
+                handleUp=()=>{
+                    this.setState((prevState)=>{
+                        return{
+                            count:prevState.count +1
+                        }
+                    })
+                }
+                handleDown=()=>{
+                    this.setState((prevState)=>{
+                        return{
+                            count:prevState.count -1
+                        }
+                    })
+                }
+                render(){
+                    return(
+                        <div>
+                        <h1>{this.state.count}</h1>
+                        <UpBotton handleUp={this.handleUp} text='+'/>
+                        <DownButton handleDown={this.handleDown} text='-'/>
+                        </div>
+                    )
+                }
+            }
+            function UpBotton(props){
+                return(
+                    <button onClick={props.handleUp}>{props.text}</button>
+                )
+            }
+            function DownButton(props){
+                return(
+                    <button onClick={props.handleDown}>{props.text}</button>  
+                )
+            } 
+            ReactDOM.render(<Counter/>,rootHandle)
+
+        </script>
+    </body>
+</html>

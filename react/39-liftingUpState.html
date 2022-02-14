@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/babel">
+        
+        
+            const rootHandle=document.getElementById('root')
+            class UsersList extends React.Component {
+                constructor() {
+                    super()
+                    this.state = {
+                        users: []
+                    }
+                }
+
+                componentDidMount(){
+                    axios.get("https://jsonplaceholder.typicode.com/users")
+                    .then((response)=>{
+                        const users=response.data
+                        this.setState({users})
+                    })
+                }
+                handleRemove=(id)=>{
+                    this.setState((prevState)=>{
+                        return{
+                            users:prevState.users.filter((user)=>{
+                                return user.id!=id
+                            })
+                        }
+                    })
+                }
+                render(){
+                    return(
+                        <div>
+                            <ul>
+                            <h2>Listing Users-{this.state.users.length}</h2>
+                            {this.state.users.map((user)=>{
+                                return <li>{user.name}<button onClick={()=>{
+                                    this.handleRemove(user.id)
+                                }}>remove</button></li>
+                            })}
+                            </ul>
+                        </div>
+                    )
+                }
+            }
+           
+            class UsersTable extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        users:[]
+                    }
+                }
+                componentDidMount(){
+                    axios.get("https://jsonplaceholder.typicode.com/users")
+                    .then((response)=>{
+                        const users=response.data
+                        this.setState({users})
+                    })
+                }
+                handleRemove=(id)=>{
+                    this.setState((prevState)=>{
+                        return{
+                            users:prevState.users.filter((user)=>{
+                                return user.id!=id
+                            })
+                        }
+                    })
+                }
+                render(){
+                    return(
+                        <div>
+                            <h3>Listing Users-{this.state.users.length}</h3>
+                            <table border="1">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Email</td>
+                                    <td>City</td>
+                                    <td>Action</td>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {this.state.users.map((user)=>{
+                                return(
+                                    <tr>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.address.city}</td>
+                                    <td><button onClick={()=>{
+                                        this.handleRemove(user.id)
+                                    }}>remove</button></td>
+                                    </tr>
+                                )
+                            })}
+                            </tbody>
+                            </table>
+                        </div>
+                    )
+                }
+
+            }
+            const ele = (
+            <div>
+                <UsersList /> 
+                <UsersTable />
+            </div>
+        )
+
+
+        ReactDOM.render(ele, rootHandle)
+
+
+        </script>
+    </body>
+</html>

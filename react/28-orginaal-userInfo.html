@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id='root'>
+
+        </div>
+        <script src="./js/react.development.js"></script>
+
+        <script src="./js/react-dom.development.js"></script>
+
+        <script src="./js/babel.js"></script>
+        <script type="text/babel">
+        
+            const rootHandle=document.getElementById('root')
+            class UserForm extends React.Component{
+                constructor(){
+                    super()
+                    this.state={
+                        name:''
+                    }
+                    this.handleSubmit=this.handleSubmit.bind(this)
+                    this.handleNameChange=this.handleNameChange.bind(this)
+
+                }
+                handleSubmit(e){
+                    e.preventDefault
+                }
+
+                handleNameChange(e){
+                    const name=e.target.value
+                    this.setState({name:name.toUpperCase()})
+
+                }
+                render(){
+                    return(
+                    <div>
+                        <form onSubmit={this.handleSubmit}>
+                             <label>
+                             Name:
+                             <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
+                             </label>
+                             <h2>{this.state.name}</h2>
+                        </form>
+                        <input type="Submit"/>
+                     </div>
+                    )
+                }
+            }
+            ReactDOM.render(<UserForm/>,rootHandle)
+
+
+        </script>
+    </body>
+</html>
